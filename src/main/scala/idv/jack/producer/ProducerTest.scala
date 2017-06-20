@@ -11,10 +11,12 @@ object ProducerTest {
     val properties = new Properties()
     properties.load(getClass().getResourceAsStream("/kafka-producer.properties"))
     println("run kafka producer....")
-    
+    println(properties.get("zookeeper.connect"))
+
     def newKafkaProducer = new KafkaProducer[String, String](properties)
     val record = new ProducerRecord[String, String]("test", "key1", "line")
     newKafkaProducer.send(record)
+    newKafkaProducer.flush()
 
   }
 

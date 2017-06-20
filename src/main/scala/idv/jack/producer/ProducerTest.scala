@@ -17,7 +17,7 @@ object ProducerTest {
     def newKafkaProducer = new KafkaProducer[Integer, String](properties)
     val record = new ProducerRecord[Integer, String]("test", 1, "line")
     newKafkaProducer.send(record)
-
+    newKafkaProducer.flush()
   }
 
 }

@@ -28,6 +28,7 @@ build
 
 .vagrant/
 worksheet/
+project/
 
 practice/akka-stream_quick-start/factorials.txt
 practice/akka-stream_quick-start/factorial2.txt

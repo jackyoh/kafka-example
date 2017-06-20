@@ -15,7 +15,7 @@ object ProducerTest {
     properties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
 
     def newKafkaProducer = new KafkaProducer[Integer, String](properties)
-    val record = new ProducerRecord[Integer, String]("topic", 1, "line")
+    val record = new ProducerRecord[Integer, String]("test", 1, "line")
     newKafkaProducer.send(record)
 
   }

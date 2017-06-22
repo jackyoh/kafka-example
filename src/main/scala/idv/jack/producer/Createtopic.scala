@@ -20,13 +20,13 @@ object Createtopic {
 
     //val zkClient = new ZkClient(zookeeperConnect, sessionTimeoutMs, connectionTimeoutMs, false)
     val zkUtils = ZkUtils.apply(zookeeperConnect, sessionTimeoutMs, connectionTimeoutMs, false)
-    println(zookeeperConnect)
 
     val topic = "my-topic1"
     val partitions = 1
     val replication = 1
 
     AdminUtils.createTopic(zkUtils, topic, partitions, replication, properties)
+    zkUtils.close()
   }
 
   /*def CreateKafkaTopic(topic: String, zookeeperHosts: String, partitionSize: Int, replicationCount: Int, connectionTimeoutMs: Int = 10000, sessionTimeoutMs: Int = 10000): Boolean = {

@@ -3,7 +3,7 @@ package idv.jack.producer
 import java.util.Properties
 import org.apache.kafka.clients.consumer.KafkaConsumer
 
-object AdminTopic {
+object ListTopic {
 
   def main(args: Array[String]): Unit ={
     val properties = new Properties()

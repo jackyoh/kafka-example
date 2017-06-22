@@ -7,6 +7,7 @@ import kafka.admin.AdminUtils
 import kafka.utils.ZkUtils
 import org.I0Itec.zkclient.{ZkClient, ZkConnection}
 
+
 object Createtopic {
 
   def main(args: Array[String]): Unit ={
@@ -17,10 +18,10 @@ object Createtopic {
     val sessionTimeoutMs = 10 * 1000
     val connectionTimeoutMs = 8 * 1000
 
-    val zkClient = new ZkClient(zookeeperConnect, sessionTimeoutMs, connectionTimeoutMs)
-    val isSecureKafkaCluster = false
+    //val zkClient = new ZkClient(zookeeperConnect, sessionTimeoutMs, connectionTimeoutMs, false)
+    val zkUtils = ZkUtils.apply(zookeeperConnect, sessionTimeoutMs, connectionTimeoutMs, false)
+    println(zookeeperConnect)
 
-    val zkUtils = new ZkUtils(zkClient, new ZkConnection(zookeeperConnect), isSecureKafkaCluster)
     val topic = "my-topic1"
     val partitions = 1
     val replication = 1
@@ -28,4 +29,11 @@ object Createtopic {
     AdminUtils.createTopic(zkUtils, topic, partitions, replication, properties)
   }
 
+  /*def CreateKafkaTopic(topic: String, zookeeperHosts: String, partitionSize: Int, replicationCount: Int, connectionTimeoutMs: Int = 10000, sessionTimeoutMs: Int = 10000): Boolean = {
+
+    val zkUtils = ZkUtils.apply(zookeeperHosts, sessionTimeoutMs, connectionTimeoutMs, false)
+    AdminUtils.createTopic( zkUtils, topic, partitionSize, replicationCount, new Properties())
+    zkUtils.close()
+    true
+  }*/
 }

@@ -11,7 +11,7 @@ object AdminTopic {
 
     val consumer = new KafkaConsumer[String, String](properties)
     val topics = consumer.listTopics()
-    topics.forEach((k, v) => println(s"key=$k  value=$v"))
+    topics.forEach((k, v) => println(s"topic name is $k"))
 
   }
 }

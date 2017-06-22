@@ -25,7 +25,7 @@ object Createtopic {
     val partitions = 1
     val replication = 1
 
-    AdminUtils.createTopic(zkUtils, topic, partitions, replication, properties)
+    AdminUtils.createTopic(zkUtils, topic, partitions, replication, new Properties())
     zkUtils.close()
   }
 

@@ -12,6 +12,6 @@ object ListTopic {
     val consumer = new KafkaConsumer[String, String](properties)
     val topics = consumer.listTopics()
     topics.forEach((k, v) => println(s"topic name is $k"))
-
+    consumer.close()
   }
 }
